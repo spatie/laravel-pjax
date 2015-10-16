@@ -66,7 +66,7 @@ class FilterIfPjaxTest extends \PHPUnit_Framework_TestCase
         return $response->headers->has('X-PJAX-URL');
     }
 
-    public function addPjaxHeaders(Request $request)
+    protected function addPjaxHeaders(Request $request)
     {
         $request->headers->set('X-PJAX', true);
         $request->headers->set('X-PJAX-CONTAINER', '#pjax-container');
