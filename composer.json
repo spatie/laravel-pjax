@@ -1,9 +1,10 @@
 {
     "name": "spatie/laravel-pjax",
-    "description": "A pjax middleware for Laravel 5freek@spatie.be",
+    "description": "A pjax middleware for Laravel 5",
     "keywords": [
         "spatie",
-        "laravel-pjax"
+        "laravel-pjax",
+        "pjax"
     ],
     "homepage": "https://github.com/spatie/laravel-pjax",
     "license": "MIT",
