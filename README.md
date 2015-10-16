@@ -8,18 +8,35 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-pjax.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-pjax)
 
 
+[Pjax](https://github.com/defunkt/jquery-pjax) is jquery plugin that leverages ajax to 
+speed up the loading time of your pages. It works by only fetching specific html fragments
+from the server, and client-side updating only certain parts of the page.
+
+The package provides a middleware that can return the reponse that the jquery plugin expects.
+
 Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source 
 projects [on our website](https://spatie.be/opensource).
 
 ## Install
-
 
 You can install the package via composer:
 ``` bash
 $ composer require spatie/laravel-pjax
 ```
 
+Next you must add the `\Spatie\Pjax\Middleware\FilterIfPjax`-middleware to the kernel.
+```php
+// app/Http/Kernel.php
+
+...
+    protected $middleware = [
+        ...
+        \Spatie\Pjax\Middleware\FilterIfPjax::class,
+    ];
+```
+
 ## Usage
+
 
 
 ## Change log
@@ -45,7 +62,7 @@ If you discover any security related issues, please email freek@spatie.be instea
 - [Freek Van der Herten](https://github.com/freekmurze)
 - [All Contributors](../../contributors)
 
-The middleware code in this package was originally written by [Jeffrey Way](https://twitter.com/jeffrey_way) for the [Laracasts](https://laracasts.com)-lesson
+The middleware in this package was originally written by [Jeffrey Way](https://twitter.com/jeffrey_way) for the [Laracasts](https://laracasts.com)-lesson
 on [pjax](https://laracasts.com/lessons/faster-page-loads-with-pjax). His original code
 can be found [in this repo on GitHub](https://github.com/laracasts/Pjax-and-Laravel).
 
