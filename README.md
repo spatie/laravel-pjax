@@ -40,7 +40,7 @@ The provided middleware provides [the behaviour that the pjax plugin expects of 
 
 > An X-PJAX request header is set to differentiate a pjax request from normal XHR requests. 
 > In this case, if the request is pjax, we skip the layout html and just render the inner
-> contents of the container."
+> contents of the container.
 
 ## Change log
 
