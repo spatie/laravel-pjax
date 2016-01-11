@@ -10,6 +10,13 @@ use Symfony\Component\DomCrawler\Crawler;
 class FilterIfPjax
 {
     /**
+     * The DomCrawler instance.
+     * 
+     * @var \Symfony\Component\DomCrawler\Crawler
+     */
+    protected $crawler;
+
+    /**
      * Handle an incoming request.
      *
      * @param \Illuminate\Http\Request $request
@@ -118,6 +125,6 @@ class FilterIfPjax
             return $this->crawler;
         }
 
-        return new Crawler($response->getContent());
+        return $this->crawler = new Crawler($response->getContent());
     }
 }
