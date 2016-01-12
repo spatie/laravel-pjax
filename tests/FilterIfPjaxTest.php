@@ -61,6 +61,18 @@ class FilterIfPjaxTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('/test', $response->headers->get('X-PJAX-URL'));
     }
 
+    /**
+     * @test
+     */
+    public function it_will_set_the_request_version_header_for_a_pjax_request()
+    {
+        $request = $this->addPjaxHeaders(Request::create('/test'));
+
+        $response = $this->middleware->handle($request, $this->next);
+
+        $this->assertEquals('1.0.0', $response->headers->get('X-PJAX-VERSION'));
+    }
+
     protected function isPjaxReponse(Response $response)
     {
         return $response->headers->has('X-PJAX-URL');

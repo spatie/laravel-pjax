@@ -10,6 +10,13 @@ use Symfony\Component\DomCrawler\Crawler;
 class FilterIfPjax
 {
     /**
+     * The DomCrawler instance.
+     * 
+     * @var \Symfony\Component\DomCrawler\Crawler
+     */
+    protected $crawler;
+
+    /**
      * Handle an incoming request.
      *
      * @param \Illuminate\Http\Request $request
@@ -26,7 +33,8 @@ class FilterIfPjax
         }
 
         $this->filterResponse($response, $request->header('X-PJAX-CONTAINER'))
-            ->setUriHeader($response, $request);
+            ->setUriHeader($response, $request)
+            ->setVersionHeader($response, $request);
 
         return $response;
     }
@@ -39,7 +47,7 @@ class FilterIfPjax
      */
     protected function filterResponse(Response $response, $container)
     {
-        $crawler = new Crawler($response->getContent());
+        $crawler = $this->getCrawler($response);
 
         $response->setContent(
             $this->makeTitle($crawler).
@@ -85,5 +93,38 @@ class FilterIfPjax
     protected function setUriHeader(Response $response, Request $request)
     {
         $response->header('X-PJAX-URL', $request->getRequestUri());
+
+        return $this;
+    }
+
+    /**
+     * @param \Illuminate\Http\Response $response
+     * @param \Illuminate\Http\Request  $request
+     */
+    protected function setVersionHeader(Response $response, Request $request)
+    {
+        $crawler = $this->getCrawler($response);
+        $node = $crawler->filter('head > meta[http-equiv]');
+
+        if ($node->count()) {
+            $response->header('X-PJAX-VERSION', $node->attr('content'));
+        }
+
+        return $this;
+    }
+
+    /**
+     * Get the DomCrawler instance.
+     *
+     * @param \Illuminate\Http\Response $response
+     * @return \Symfony\Component\DomCrawler\Crawler
+     */
+    protected function getCrawler(Response $response)
+    {
+        if ($this->crawler) {
+            return $this->crawler;
+        }
+
+        return $this->crawler = new Crawler($response->getContent());
     }
 }
