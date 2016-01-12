@@ -2,6 +2,9 @@
 
 All Notable changes to `laravel-pjax` will be documented in this file
 
+## 1.2.0 - 2016-01-12
+- Added pjax version header 
+
 ## 1.1.0 - 2015-12-25
 - Add compatibility for symfony 3.0 components
 
