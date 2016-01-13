@@ -32,7 +32,7 @@ class FilterIfPjax
             return $response;
         }
 
-        $this->filterResponse($response, $request->header('X-PJAX-CONTAINER'))
+        $this->filterResponse($response, $request->header('X-PJAX-Container'))
             ->setUriHeader($response, $request)
             ->setVersionHeader($response, $request);
 
