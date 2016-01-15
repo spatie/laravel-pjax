@@ -70,7 +70,7 @@ class FilterIfPjaxTest extends \PHPUnit_Framework_TestCase
 
         $response = $this->middleware->handle($request, $this->next);
 
-        $this->assertEquals('1.0.0', $response->headers->get('X-PJAX-VERSION'));
+        $this->assertEquals('1.0.0', $response->headers->get('X-PJAX-Version'));
     }
 
     protected function isPjaxReponse(Response $response)
@@ -81,7 +81,7 @@ class FilterIfPjaxTest extends \PHPUnit_Framework_TestCase
     protected function addPjaxHeaders(Request $request)
     {
         $request->headers->set('X-PJAX', true);
-        $request->headers->set('X-PJAX-CONTAINER', '#pjax-container');
+        $request->headers->set('X-PJAX-Container', '#pjax-container');
 
         return $request;
     }
