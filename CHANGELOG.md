@@ -2,7 +2,7 @@
 
 All Notable changes to `laravel-pjax` will be documented in this file
 
-## 1.2.2 - 2016-01-13
+## 1.2.2 - 2016-01-15
 - Fix capitilazation of header name, the sequel
 
 ## 1.2.1 - 2016-01-13
