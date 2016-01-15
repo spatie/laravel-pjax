@@ -107,7 +107,7 @@ class FilterIfPjax
         $node = $crawler->filter('head > meta[http-equiv]');
 
         if ($node->count()) {
-            $response->header('X-PJAX-VERSION', $node->attr('content'));
+            $response->header('X-PJAX-Version', $node->attr('content'));
         }
 
         return $this;
