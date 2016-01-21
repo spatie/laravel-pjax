@@ -11,7 +11,7 @@ class FilterIfPjax
 {
     /**
      * The DomCrawler instance.
-     * 
+     *
      * @var \Symfony\Component\DomCrawler\Crawler
      */
     protected $crawler;
@@ -60,13 +60,17 @@ class FilterIfPjax
     /**
      * @param \Symfony\Component\DomCrawler\Crawler $crawler
      *
-     * @return string
+     * @return null|string
      */
     protected function makeTitle(Crawler $crawler)
     {
-        $pageTitle = $crawler->filter('head > title')->html();
+        $pageTitle = $crawler->filter('head > title');
 
-        return "<title>{$pageTitle}</title>";
+        if (! $pageTitle->count()) {
+            return;
+        }
+
+        return "<title>{$pageTitle->html()}</title>";
     }
 
     /**
