@@ -8,8 +8,6 @@ use Symfony\Component\HttpFoundation\Response;
 
 class FilterIfPjaxTest extends \PHPUnit_Framework_TestCase
 {
-    protected $next = [];
-
     public function setUp()
     {
         $this->middleware = new FilterIfPjax();
