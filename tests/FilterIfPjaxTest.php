@@ -13,91 +13,77 @@ class FilterIfPjaxTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->middleware = new FilterIfPjax();
-
-        $this->fullPageHtml = file_get_contents(__DIR__.'/fixtures/page.html');
-
-        $response = (new \Illuminate\Http\Response($this->fullPageHtml));
-
-        $this->next['page'] = function ($request) use ($response) { return $response; };
-
-        $this->noTitleHtml = file_get_contents(__DIR__.'/fixtures/noTitle.html');
-
-        $response = (new \Illuminate\Http\Response($this->noTitleHtml));
-
-        $this->next['noTitle'] = function ($request) use ($response) { return $response; };
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_will_not_modify_a_non_pjax_request()
     {
         $request = new Request();
 
-        $response = $this->middleware->handle($request, $this->getNext('page'));
+        $response = $this->middleware->handle($request, $this->getNext());
 
         $this->assertFalse($this->isPjaxReponse($response));
 
-        $this->assertEquals($this->fullPageHtml, $response->getContent());
+        $this->assertEquals($this->getHtml(), $response->getContent());
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_will_return_the_title_and_contents_of_the_container_for_pjax_request()
     {
         $request = $this->addPjaxHeaders(new Request());
 
-        $response = $this->middleware->handle($request, $this->getNext('page'));
+        $response = $this->middleware->handle($request, $this->getNext());
 
         $this->assertTrue($this->isPjaxReponse($response));
 
         $this->assertEquals('<title>Pjax title</title>Content', $response->getContent());
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_will_not_return_the_title_if_it_is_not_set()
     {
         $request = $this->addPjaxHeaders(new Request());
 
-        $response = $this->middleware->handle($request, $this->getNext('noTitle'));
+        $response = $this->middleware->handle($request, $this->getNext('pageWithoutTitle'));
 
         $this->assertTrue($this->isPjaxReponse($response));
 
         $this->assertEquals('Content', $response->getContent());
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_will_set_the_request_uri_for_a_pjax_request()
     {
         $request = $this->addPjaxHeaders(Request::create('/test'));
 
-        $response = $this->middleware->handle($request, $this->getNext('page'));
+        $response = $this->middleware->handle($request, $this->getNext());
 
         $this->assertEquals('/test', $response->headers->get('X-PJAX-URL'));
     }
 
-    /**
-     * @test
-     */
+    /** @test */
     public function it_will_set_the_request_version_header_for_a_pjax_request()
     {
         $request = $this->addPjaxHeaders(Request::create('/test'));
 
-        $response = $this->middleware->handle($request, $this->getNext('page'));
+        $response = $this->middleware->handle($request, $this->getNext());
 
         $this->assertEquals('1.0.0', $response->headers->get('X-PJAX-Version'));
     }
 
+    /**
+     * @param \Symfony\Component\HttpFoundation\Response $response
+     * @return bool
+     */
     protected function isPjaxReponse(Response $response)
     {
         return $response->headers->has('X-PJAX-URL');
     }
 
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\Request
+     */
     protected function addPjaxHeaders(Request $request)
     {
         $request->headers->set('X-PJAX', true);
@@ -105,9 +91,29 @@ class FilterIfPjaxTest extends \PHPUnit_Framework_TestCase
 
         return $request;
     }
-    
-    protected function getNext($fixture)
+
+    /**
+     * @param string $pageName
+     * @return \Closure
+     */
+    protected function getNext($pageName = 'pageWithTitle')
     {
-        return $this->next[$fixture];
+        $html = $this->getHtml($pageName);
+
+        $response = (new \Illuminate\Http\Response($html));
+
+        return function ($request) use ($response) {
+
+            return $response;
+        };
+    }
+
+    /**
+     * @param string $pageName
+     * @return string
+     */
+    protected function getHtml($pageName = 'pageWithTitle')
+    {
+        return file_get_contents(__DIR__."/fixtures/{$pageName}.html");
     }
 }
