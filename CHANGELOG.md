@@ -2,6 +2,9 @@
 
 All Notable changes to `laravel-pjax` will be documented in this file
 
+## 1.3.0 - 2016-01-22
+- Added a check on title
+
 ## 1.2.2 - 2016-01-15
 - Fix capitalization of header name, the sequel
 
