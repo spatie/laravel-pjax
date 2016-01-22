@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 class FilterIfPjaxTest extends \PHPUnit_Framework_TestCase
 {
     protected $next = [];
-    
+
     public function setUp()
     {
         $this->middleware = new FilterIfPjax();
@@ -73,6 +73,7 @@ class FilterIfPjaxTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @param \Symfony\Component\HttpFoundation\Response $response
+     *
      * @return bool
      */
     protected function isPjaxReponse(Response $response)
@@ -82,6 +83,7 @@ class FilterIfPjaxTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Request
      */
     protected function addPjaxHeaders(Request $request)
@@ -94,6 +96,7 @@ class FilterIfPjaxTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @param string $pageName
+     *
      * @return \Closure
      */
     protected function getNext($pageName = 'pageWithTitle')
@@ -110,6 +113,7 @@ class FilterIfPjaxTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @param string $pageName
+     *
      * @return string
      */
     protected function getHtml($pageName = 'pageWithTitle')

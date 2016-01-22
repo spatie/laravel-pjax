@@ -28,7 +28,7 @@ class FilterIfPjax
     {
         $response = $next($request);
 
-        if (! $request->pjax() || $response->isRedirection()) {
+        if (!$request->pjax() || $response->isRedirection()) {
             return $response;
         }
 
@@ -66,7 +66,7 @@ class FilterIfPjax
     {
         $pageTitle = $crawler->filter('head > title');
 
-        if (! $pageTitle->count()) {
+        if (!$pageTitle->count()) {
             return;
         }
 
@@ -83,7 +83,7 @@ class FilterIfPjax
     {
         $content = $crawler->filter($container);
 
-        if (! $content->count()) {
+        if (!$content->count()) {
             abort(422);
         }
 
@@ -121,6 +121,7 @@ class FilterIfPjax
      * Get the DomCrawler instance.
      *
      * @param \Illuminate\Http\Response $response
+     *
      * @return \Symfony\Component\DomCrawler\Crawler
      */
     protected function getCrawler(Response $response)
