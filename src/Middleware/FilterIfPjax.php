@@ -34,9 +34,21 @@ class FilterIfPjax
 
         $this->filterResponse($response, $request->header('X-PJAX-Container'))
             ->setUriHeader($response, $request)
-            ->setVersionHeader($response, $request);
+            ->setVersionHeader($response, $request)
+            ->filter($response, $request);
 
         return $response;
+    }
+    
+    /**
+     * Easily add extra filters for PJAX requests.
+     * 
+     * @param \Illuminate\Http\Response $response
+     * @param \Illuminate\Http\Request  $request
+     */
+    protected function filter(Response $response, Request $request)
+    {
+        //
     }
 
     /**
