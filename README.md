@@ -7,13 +7,13 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/spatie/laravel-pjax.svg?style=flat-square)](https://scrutinizer-ci.com/g/spatie/laravel-pjax)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-pjax.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-pjax)
 
-[Pjax](https://github.com/defunkt/jquery-pjax) is jquery plugin that leverages ajax to 
+[Pjax](https://github.com/defunkt/jquery-pjax) is jquery plugin that leverages ajax to
 speed up the loading time of your pages. It works by only fetching specific html fragments
 from the server, and client-side updating only certain parts of the page.
 
 The package provides a middleware that can eturn the reponse that the jquery plugin expects.
 
-Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source 
+Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source
 projects [on our website](https://spatie.be/opensource).
 
 ## Installation
@@ -38,13 +38,39 @@ protected $middleware = [
 
 The provided middleware provides [the behaviour that the pjax plugin expects of the server](https://github.com/defunkt/jquery-pjax#server-side):
 
-> An X-PJAX request header is set to differentiate a pjax request from normal XHR requests. 
+> An X-PJAX request header is set to differentiate a pjax request from normal XHR requests.
 > In this case, if the request is pjax, we skip the layout html and just render the inner
 > contents of the container.
 
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
+
+## Extending
+
+If you wish to add any extra filters for PJAX request, you can simply extend this Middleware and overwrite the `filter` method. This allows you do any other modifications to the request before sending it to the next Middleware. You can both modify the response before and after this Middleware modifies is. Simply do your modifications before or after calling the `$filter` closure passed to the `filter` method. You also have access to the Symfony DomCrawler through the `getCrawler` method.
+
+```php
+class MyPjaxFilter extends FilterIfPjax
+{
+    /**
+     * Easily add extra filters for PJAX requests.
+     *
+     * @param \Illuminate\Http\Response $response
+     * @param \Illuminate\Http\Request  $request
+     */
+    protected function filter(Response $response, Request $request, Closure $filter)
+    {
+        $crawler = $this->getCrawler();
+
+        // Before filter
+
+        $filter($response, $request);
+
+        // After filter
+        $response->header('X-PJAX-Route', $request->route()->getName());
+    }
+```
 
 ## Testing
 
