@@ -15,6 +15,13 @@ class FilterIfPjax
      * @var \Symfony\Component\DomCrawler\Crawler
      */
     protected $crawler;
+    
+    /**
+     * Whether the required filters have been applied.
+     *
+     * @var bool
+     */
+    private $filtered = false;
 
     /**
      * Handle an incoming request.
@@ -32,23 +39,50 @@ class FilterIfPjax
             return $response;
         }
 
-        $this->filterResponse($response, $request->header('X-PJAX-Container'))
-            ->setUriHeader($response, $request)
-            ->setVersionHeader($response, $request)
-            ->filter($response, $request);
+        $this->filter($response, $request, function($response, $request) {
+            $this->requiredFilter($response, $request);
+        });
+
+        if (! $this->isFiltered()) {
+            $this->requiredFilter($response, $request);
+        }
 
         return $response;
     }
     
     /**
      * Easily add extra filters for PJAX requests.
-     * 
+     *
      * @param \Illuminate\Http\Response $response
      * @param \Illuminate\Http\Request  $request
      */
-    protected function filter(Response $response, Request $request)
+    protected function filter(Response $response, Request $request, Closure $filter)
     {
-        //
+        $filter($response, $request);
+    }
+
+    /**
+     * Run the required filters.
+     *
+     * @return $this
+     */
+    private function requiredFilter(Response $response, Request $request)
+    {
+        $this->filterResponse($response, $request->header('X-PJAX-Container'))
+            ->setUriHeader($response, $request)
+            ->setVersionHeader($response, $request);
+
+        $this->filtered = true;
+    }
+    
+    /**
+     * Checks if the default PJAX filters have been applied.
+     *
+     * @return bool
+     */
+    private function isFiltered()
+    {
+        return $this->filtered;
     }
 
     /**
@@ -57,7 +91,7 @@ class FilterIfPjax
      *
      * @return $this
      */
-    protected function filterResponse(Response $response, $container)
+    private function filterResponse(Response $response, $container)
     {
         $crawler = $this->getCrawler($response);
 
@@ -74,7 +108,7 @@ class FilterIfPjax
      *
      * @return null|string
      */
-    protected function makeTitle(Crawler $crawler)
+    private function makeTitle(Crawler $crawler)
     {
         $pageTitle = $crawler->filter('head > title');
 
@@ -91,7 +125,7 @@ class FilterIfPjax
      *
      * @return string
      */
-    protected function fetchContainer(Crawler $crawler, $container)
+    private function fetchContainer(Crawler $crawler, $container)
     {
         $content = $crawler->filter($container);
 
@@ -106,7 +140,7 @@ class FilterIfPjax
      * @param \Illuminate\Http\Response $response
      * @param \Illuminate\Http\Request  $request
      */
-    protected function setUriHeader(Response $response, Request $request)
+    private function setUriHeader(Response $response, Request $request)
     {
         $response->header('X-PJAX-URL', $request->getRequestUri());
 
@@ -117,7 +151,7 @@ class FilterIfPjax
      * @param \Illuminate\Http\Response $response
      * @param \Illuminate\Http\Request  $request
      */
-    protected function setVersionHeader(Response $response, Request $request)
+    private function setVersionHeader(Response $response, Request $request)
     {
         $crawler = $this->getCrawler($response);
         $node = $crawler->filter('head > meta[http-equiv]');
