@@ -11,7 +11,7 @@
 speed up the loading time of your pages. It works by only fetching specific html fragments
 from the server, and client-side updating only certain parts of the page.
 
-The package provides a middleware that can eturn the reponse that the jquery plugin expects.
+The package provides a middleware that can return the reponse that the jquery plugin expects.
 
 Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source 
 projects [on our website](https://spatie.be/opensource).
