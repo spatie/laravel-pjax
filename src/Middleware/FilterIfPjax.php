@@ -108,7 +108,7 @@ class FilterIfPjax
     protected function setVersionHeader(Response $response, Request $request)
     {
         $crawler = $this->getCrawler($response);
-        $node = $crawler->filter('head > meta[http-equiv]');
+        $node = $crawler->filter('head > meta[http-equiv="X-PJAX-Version"]');
 
         if ($node->count()) {
             $response->header('X-PJAX-Version', $node->attr('content'));
