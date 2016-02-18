@@ -69,6 +69,16 @@ class FilterIfPjaxTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('1.0.0', $response->headers->get('X-PJAX-Version'));
     }
 
+    /** @test */
+    public function it_wil_not_set_a_version_header_when_it_is_not_requested()
+    {
+        $request = $this->addPjaxHeaders(new Request());
+
+        $response = $this->middleware->handle($request, $this->getNext('pageWithoutVersionMetaTag'));
+
+        $this->assertEquals(null, $response->headers->get('X-PJAX-Version'));
+    }
+
     /**
      * @param \Symfony\Component\HttpFoundation\Response $response
      *

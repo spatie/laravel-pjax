@@ -93,6 +93,8 @@ class FilterIfPjax
     /**
      * @param \Illuminate\Http\Response $response
      * @param \Illuminate\Http\Request  $request
+     *
+     * @return $this
      */
     protected function setUriHeader(Response $response, Request $request)
     {
@@ -104,14 +106,16 @@ class FilterIfPjax
     /**
      * @param \Illuminate\Http\Response $response
      * @param \Illuminate\Http\Request  $request
+     *
+     * @return $this
      */
     protected function setVersionHeader(Response $response, Request $request)
     {
-        $crawler = $this->getCrawler($response);
-        $node = $crawler->filter('head > meta[http-equiv="X-PJAX-Version"]');
+        $crawler = $this->getCrawler($this->createReponseWithLowerCaseContent($response));
+        $node = $crawler->filter('head > meta[http-equiv="x-pjax-version"]');
 
         if ($node->count()) {
-            $response->header('X-PJAX-Version', $node->attr('content'));
+            $response->header('x-pjax-version', $node->attr('content'));
         }
 
         return $this;
@@ -131,5 +135,19 @@ class FilterIfPjax
         }
 
         return $this->crawler = new Crawler($response->getContent());
+    }
+
+    /**
+     * Make the content of the given response lowercase.
+     *
+     * @param \Illuminate\Http\Response $response
+     *
+     * @return \Illuminate\Http\Response
+     */
+    protected function createReponseWithLowerCaseContent(Response $response)
+    {
+        $lowercaseContent = strtolower($response->getContent());
+
+        return Response::create($lowercaseContent);
     }
 }

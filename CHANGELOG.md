@@ -2,6 +2,9 @@
 
 All Notable changes to `laravel-pjax` will be documented in this file
 
+## 1.3.1 - 2016-02-18
+- Fix a bug where the version header would be sent whenever any meta http-equiv tag was set
+
 ## 1.3.0 - 2016-01-22
 - Added a check on title
 
