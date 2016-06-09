@@ -42,6 +42,16 @@ The provided middleware provides [the behaviour that the pjax plugin expects of 
 > In this case, if the request is pjax, we skip the layout html and just render the inner
 > contents of the container.
 
+### Laravel cache busting tip
+When using Laravel Elixir to manage your frontend cache busting, you can use it to your advantage to bust pjax's cache. Simply include the `elixir` method as the content of the `x-pjax-version` meta tag:
+```html
+<link rel="stylesheet" href="{{ elixir('css/app.css') }}"/>
+```
+Multiple files:
+```html
+<link rel="stylesheet" href="{{ elixir('css/app.css') . elixir('css/app2.css') }}"/>
+```
+This way, anytime your frontend's cache gets busted, pjax's cache gets automatically busted as well!
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
