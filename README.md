@@ -45,11 +45,11 @@ The provided middleware provides [the behaviour that the pjax plugin expects of 
 ### Laravel cache busting tip
 When using Laravel Elixir to manage your frontend cache busting, you can use it to your advantage to bust pjax's cache. Simply include the `elixir` method as the content of the `x-pjax-version` meta tag:
 ```html
-<link rel="stylesheet" href="{{ elixir('css/app.css') }}"/>
+<meta http-equiv="x-pjax-version" content="{{ elixir('css/app.css') }}">
 ```
 Multiple files:
 ```html
-<link rel="stylesheet" href="{{ elixir('css/app.css') . elixir('css/app2.css') }}"/>
+<meta http-equiv="x-pjax-version" content="{{ elixir('css/app.css') . elixir('css/app2.css') }}">
 ```
 This way, anytime your frontend's cache gets busted, pjax's cache gets automatically busted as well!
 ## Change log
