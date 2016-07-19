@@ -111,7 +111,7 @@ class FilterIfPjax
      */
     protected function setVersionHeader(Response $response, Request $request)
     {
-        $crawler = $this->getCrawler($this->createReponseWithLowerCaseContent($response));
+        $crawler = $this->getCrawler($this->createResponseWithLowerCaseContent($response));
         $node = $crawler->filter('head > meta[http-equiv="x-pjax-version"]');
 
         if ($node->count()) {
@@ -144,7 +144,7 @@ class FilterIfPjax
      *
      * @return \Illuminate\Http\Response
      */
-    protected function createReponseWithLowerCaseContent(Response $response)
+    protected function createResponseWithLowerCaseContent(Response $response)
     {
         $lowercaseContent = strtolower($response->getContent());
 

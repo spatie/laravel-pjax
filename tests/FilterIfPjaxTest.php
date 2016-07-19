@@ -20,7 +20,7 @@ class FilterIfPjaxTest extends \PHPUnit_Framework_TestCase
 
         $response = $this->middleware->handle($request, $this->getNext());
 
-        $this->assertFalse($this->isPjaxReponse($response));
+        $this->assertFalse($this->isPjaxResponse($response));
 
         $this->assertEquals($this->getHtml(), $response->getContent());
     }
@@ -32,7 +32,7 @@ class FilterIfPjaxTest extends \PHPUnit_Framework_TestCase
 
         $response = $this->middleware->handle($request, $this->getNext());
 
-        $this->assertTrue($this->isPjaxReponse($response));
+        $this->assertTrue($this->isPjaxResponse($response));
 
         $this->assertEquals('<title>Pjax title</title>Content', $response->getContent());
     }
@@ -44,7 +44,7 @@ class FilterIfPjaxTest extends \PHPUnit_Framework_TestCase
 
         $response = $this->middleware->handle($request, $this->getNext('pageWithoutTitle'));
 
-        $this->assertTrue($this->isPjaxReponse($response));
+        $this->assertTrue($this->isPjaxResponse($response));
 
         $this->assertEquals('Content', $response->getContent());
     }
@@ -84,7 +84,7 @@ class FilterIfPjaxTest extends \PHPUnit_Framework_TestCase
      *
      * @return bool
      */
-    protected function isPjaxReponse(Response $response)
+    protected function isPjaxResponse(Response $response)
     {
         return $response->headers->has('X-PJAX-URL');
     }
