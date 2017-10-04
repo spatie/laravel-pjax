@@ -7,11 +7,11 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/spatie/laravel-pjax.svg?style=flat-square)](https://scrutinizer-ci.com/g/spatie/laravel-pjax)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-pjax.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-pjax)
 
-[Pjax](https://github.com/defunkt/jquery-pjax) is jquery plugin that leverages ajax to 
+[Pjax](https://github.com/defunkt/jquery-pjax) is a jQuery plugin that leverages ajax to 
 speed up the loading time of your pages. It works by only fetching specific html fragments
-from the server, and client-side updating only certain parts of the page.
+from the server, and client-side updating only happens on certain parts of the page.
 
-The package provides a middleware that can return the response that the jquery plugin expects.
+The package provides a middleware that can return the response that the jQuery plugin expects.
 
 Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source 
 projects [on our website](https://spatie.be/opensource).
