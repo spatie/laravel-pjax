@@ -16,14 +16,6 @@ The package provides a middleware that can return the response that the jQuery p
 Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source 
 projects [on our website](https://spatie.be/opensource).
 
-## Postcardware
-
-You're free to use this package (it's [MIT-licensed](LICENSE.md)), but if it makes it to your production environment we highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
-
-Our address is: Spatie, Samberstraat 69D, 2060 Antwerp, Belgium.
-
-All best postcards are published [on our website](https://spatie.be/en/opensource/postcards).
-
 ## Installation
 
 You can install the package via composer:
@@ -66,7 +58,7 @@ Multiple files:
 
 This way, anytime your frontend's cache gets busted, pjax's cache gets automatically busted as well!
 
-## Change log
+## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
 
@@ -84,6 +76,14 @@ Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
 
 If you discover any security related issues, please email freek@spatie.be instead of using the issue tracker.
 
+## Postcardware
+
+You're free to use this package, but if it makes it to your production environment we highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using.
+
+Our address is: Spatie, Samberstraat 69D, 2060 Antwerp, Belgium.
+
+We publish all received postcards [on our company website](https://spatie.be/en/opensource/postcards).
+
 ## Credits
 
 - [Freek Van der Herten](https://github.com/freekmurze)
@@ -93,8 +93,12 @@ The middleware in this package was originally written by [Jeffrey Way](https://t
 on [pjax](https://laracasts.com/lessons/faster-page-loads-with-pjax). His original code
 can be found [in this repo on GitHub](https://github.com/laracasts/Pjax-and-Laravel).
 
-## About Spatie
+## Support us
+
 Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
+
+Does your business depend on our contributions? Reach out and support us on [Patreon](https://www.patreon.com/spatie). 
+All pledges will be dedicated to allocating workforce on maintenance and new awesome stuff.
 
 ## License
 
