@@ -3,10 +3,11 @@
 namespace Spatie\Pjax\Test;
 
 use Illuminate\Http\Request;
+use PHPUnit\Framework\TestCase;
 use Spatie\Pjax\Middleware\FilterIfPjax;
 use Symfony\Component\HttpFoundation\Response;
 
-class FilterIfPjaxTest extends \PHPUnit_Framework_TestCase
+class FilterIfPjaxTest extends TestCase
 {
     public function setUp()
     {
