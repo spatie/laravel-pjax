@@ -1,6 +1,9 @@
 # Changelog
 
-All Notable changes to `laravel-pjax` will be documented in this file
+All ,otable changes to `laravel-pjax` will be documented in this file
+
+## 1.2.1 - 2018-02-06
+- allow symfony 4
 
 ## 1.3.1 - 2016-02-18
 - Fix a bug where the version header would be sent whenever any meta http-equiv tag was set
