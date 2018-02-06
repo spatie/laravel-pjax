@@ -2,7 +2,7 @@
 
 All ,otable changes to `laravel-pjax` will be documented in this file
 
-## 1.4.1 - 2018-02-06
+## 1.3.2 - 2018-02-06
 - allow symfony 4
 
 ## 1.3.1 - 2016-02-18
