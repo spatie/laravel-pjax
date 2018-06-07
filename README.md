@@ -13,6 +13,8 @@ from the server, and client-side updating only happens on certain parts of the p
 
 The package provides a middleware that can return the response that the jQuery plugin expects.
 
+There's a [Vue-PJAX Adapter](https://github.com/riverskies/vue-pjax-adapter) equivalent by @barnabaskecskes which doesn't require jQuery.
+
 Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source 
 projects [on our website](https://spatie.be/opensource).
 
