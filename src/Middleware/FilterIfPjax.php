@@ -16,15 +16,7 @@ class FilterIfPjax
      */
     protected $crawler;
 
-    /**
-     * Handle an incoming request.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \Closure                 $next
-     *
-     * @return mixed
-     */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
         $response = $next($request);
 
@@ -39,13 +31,7 @@ class FilterIfPjax
         return $response;
     }
 
-    /**
-     * @param \Illuminate\Http\Response $response
-     * @param string                    $container
-     *
-     * @return $this
-     */
-    protected function filterResponse(Response $response, $container)
+    protected function filterResponse(Response $response, $container): self
     {
         $crawler = $this->getCrawler($response);
 
@@ -57,29 +43,18 @@ class FilterIfPjax
         return $this;
     }
 
-    /**
-     * @param \Symfony\Component\DomCrawler\Crawler $crawler
-     *
-     * @return null|string
-     */
-    protected function makeTitle(Crawler $crawler)
+    protected function makeTitle(Crawler $crawler): ?string
     {
         $pageTitle = $crawler->filter('head > title');
 
         if (!$pageTitle->count()) {
-            return;
+            return null;
         }
 
         return "<title>{$pageTitle->html()}</title>";
     }
 
-    /**
-     * @param \Symfony\Component\DomCrawler\Crawler $crawler
-     * @param string                                $container
-     *
-     * @return string
-     */
-    protected function fetchContainer(Crawler $crawler, $container)
+    protected function fetchContainer(Crawler $crawler, $container): string
     {
         $content = $crawler->filter($container);
 
@@ -90,26 +65,14 @@ class FilterIfPjax
         return $content->html();
     }
 
-    /**
-     * @param \Illuminate\Http\Response $response
-     * @param \Illuminate\Http\Request  $request
-     *
-     * @return $this
-     */
-    protected function setUriHeader(Response $response, Request $request)
+    protected function setUriHeader(Response $response, Request $request): self
     {
         $response->header('X-PJAX-URL', $request->getRequestUri());
 
         return $this;
     }
 
-    /**
-     * @param \Illuminate\Http\Response $response
-     * @param \Illuminate\Http\Request  $request
-     *
-     * @return $this
-     */
-    protected function setVersionHeader(Response $response, Request $request)
+    protected function setVersionHeader(Response $response, Request $request): self
     {
         $crawler = $this->getCrawler($this->createResponseWithLowerCaseContent($response));
         $node = $crawler->filter('head > meta[http-equiv="x-pjax-version"]');
@@ -121,14 +84,7 @@ class FilterIfPjax
         return $this;
     }
 
-    /**
-     * Get the DomCrawler instance.
-     *
-     * @param \Illuminate\Http\Response $response
-     *
-     * @return \Symfony\Component\DomCrawler\Crawler
-     */
-    protected function getCrawler(Response $response)
+    protected function getCrawler(Response $response): Crawler
     {
         if ($this->crawler) {
             return $this->crawler;
@@ -137,14 +93,7 @@ class FilterIfPjax
         return $this->crawler = new Crawler($response->getContent());
     }
 
-    /**
-     * Make the content of the given response lowercase.
-     *
-     * @param \Illuminate\Http\Response $response
-     *
-     * @return \Illuminate\Http\Response
-     */
-    protected function createResponseWithLowerCaseContent(Response $response)
+    protected function createResponseWithLowerCaseContent(Response $response): Response
     {
         $lowercaseContent = strtolower($response->getContent());
 

@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class FilterIfPjaxTest extends TestCase
 {
-    public function setUp()
+    public function setUp(): void
     {
         $this->middleware = new FilterIfPjax();
     }
