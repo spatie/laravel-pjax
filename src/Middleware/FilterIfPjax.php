@@ -9,11 +9,7 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class FilterIfPjax
 {
-    /**
-     * The DomCrawler instance.
-     *
-     * @var \Symfony\Component\DomCrawler\Crawler
-     */
+    /** @var \Symfony\Component\DomCrawler\Crawler */
     protected $crawler;
 
     public function handle(Request $request, Closure $next): Response

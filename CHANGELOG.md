@@ -2,6 +2,10 @@
 
 All ,otable changes to `laravel-pjax` will be documented in this file
 
+## 2.0.0 - 2019-09-20
+- Now requires PHP 7.2
+- Laravel 6 support
+
 ## 1.3.2 - 2018-02-06
 - allow symfony 4
 
