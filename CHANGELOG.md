@@ -2,6 +2,9 @@
 
 All ,otable changes to `laravel-pjax` will be documented in this file
 
+## 2.0.1 - 2019-09-30
+- response type fix (#33)
+
 ## 2.0.0 - 2019-09-20
 - Now requires PHP 7.2
 - Laravel 6 support
