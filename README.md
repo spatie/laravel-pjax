@@ -1,4 +1,4 @@
-# A pjax middleware for Laravel 5
+# A pjax middleware for Laravel 5 or 6
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-pjax.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-pjax)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
@@ -7,7 +7,7 @@
 [![Quality Score](https://img.shields.io/scrutinizer/g/spatie/laravel-pjax.svg?style=flat-square)](https://scrutinizer-ci.com/g/spatie/laravel-pjax)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-pjax.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-pjax)
 
-[Pjax](https://github.com/defunkt/jquery-pjax) is a jQuery plugin that leverages ajax to 
+[Pjax](https://github.com/defunkt/jquery-pjax) is a jQuery plugin that leverages ajax to
 speed up the loading time of your pages. It works by only fetching specific html fragments
 from the server, and client-side updating only happens on certain parts of the page.
 
@@ -15,7 +15,7 @@ The package provides a middleware that can return the response that the jQuery p
 
 There's a [Vue-PJAX Adapter](https://github.com/riverskies/vue-pjax-adapter) equivalent by @barnabaskecskes which doesn't require jQuery.
 
-Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source 
+Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source
 projects [on our website](https://spatie.be/opensource).
 
 ## Installation
@@ -41,7 +41,7 @@ protected $middleware = [
 
 The provided middleware provides [the behaviour that the pjax plugin expects of the server](https://github.com/defunkt/jquery-pjax#server-side):
 
-> An X-PJAX request header is set to differentiate a pjax request from normal XHR requests. 
+> An X-PJAX request header is set to differentiate a pjax request from normal XHR requests.
 > In this case, if the request is pjax, we skip the layout html and just render the inner
 > contents of the container.
 
@@ -99,7 +99,7 @@ can be found [in this repo on GitHub](https://github.com/laracasts/Pjax-and-Lara
 
 Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
 
-Does your business depend on our contributions? Reach out and support us on [Patreon](https://www.patreon.com/spatie). 
+Does your business depend on our contributions? Reach out and support us on [Patreon](https://www.patreon.com/spatie).
 All pledges will be dedicated to allocating workforce on maintenance and new awesome stuff.
 
 ## License
