@@ -1,6 +1,9 @@
 # Changelog
 
-All ,otable changes to `laravel-pjax` will be documented in this file
+All notable changes to `laravel-pjax` will be documented in this file
+
+## 2.0.2 - 2019-12-11
+- allow symfony 5 components
 
 ## 2.0.1 - 2019-09-30
 - response type fix (#33)
