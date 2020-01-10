@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-pjax` will be documented in this file
 
+## 2.0.3 - 2020-01-10
+
+- change param to BaseResponse (#38)
+
 ## 2.0.2 - 2019-12-11
 - allow symfony 5 components
 
