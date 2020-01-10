@@ -28,7 +28,7 @@ class FilterIfPjax
         return $response;
     }
 
-    protected function filterResponse(Response $response, $container): self
+    protected function filterResponse(BaseResponse $response, $container): self
     {
         $crawler = $this->getCrawler($response);
 
@@ -81,7 +81,7 @@ class FilterIfPjax
         return $this;
     }
 
-    protected function getCrawler(Response $response): Crawler
+    protected function getCrawler(BaseResponse $response): Crawler
     {
         if ($this->crawler) {
             return $this->crawler;
