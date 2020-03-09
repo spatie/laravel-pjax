@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-pjax` will be documented in this file
 
+## 2.1.0 - 2020-03-09
+
+- add support for Laravel 7
+
 ## 2.0.3 - 2020-01-10
 
 - change param to BaseResponse (#38)
