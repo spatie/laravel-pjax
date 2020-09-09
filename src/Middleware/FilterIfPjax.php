@@ -5,8 +5,8 @@ namespace Spatie\Pjax\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
-use Symfony\Component\HttpFoundation\Response as BaseResponse;
 use Symfony\Component\DomCrawler\Crawler;
+use Symfony\Component\HttpFoundation\Response as BaseResponse;
 
 class FilterIfPjax
 {
@@ -17,7 +17,7 @@ class FilterIfPjax
     {
         $response = $next($request);
 
-        if (!$request->pjax() || $response->isRedirection()) {
+        if (! $request->pjax() || $response->isRedirection()) {
             return $response;
         }
 
@@ -44,7 +44,7 @@ class FilterIfPjax
     {
         $pageTitle = $crawler->filter('head > title');
 
-        if (!$pageTitle->count()) {
+        if (! $pageTitle->count()) {
             return null;
         }
 
@@ -55,7 +55,7 @@ class FilterIfPjax
     {
         $content = $crawler->filter($container);
 
-        if (!$content->count()) {
+        if (! $content->count()) {
             abort(422);
         }
 

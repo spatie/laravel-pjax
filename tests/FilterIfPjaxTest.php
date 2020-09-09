@@ -115,7 +115,6 @@ class FilterIfPjaxTest extends TestCase
         $response = (new \Illuminate\Http\Response($html));
 
         return function ($request) use ($response) {
-
             return $response;
         };
     }
