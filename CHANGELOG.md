@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-pjax` will be documented in this file
 
+## 2.1.2 - 2020-12-04
+
+- Support PHP 8
+
 ## 2.1.1 - 2020-09-09
 
 - Support Laravel 8
