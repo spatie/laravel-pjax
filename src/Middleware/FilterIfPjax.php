@@ -94,6 +94,6 @@ class FilterIfPjax
     {
         $lowercaseContent = strtolower($response->getContent());
 
-        return Response::create($lowercaseContent);
+        return new Response($lowercaseContent);
     }
 }
