@@ -2,6 +2,18 @@
 
 All notable changes to `laravel-pjax` will be documented in this file
 
+## 2.2.2 - 2022-03-17
+
+## What's Changed
+
+- Fix Response constructor by @imacrayon in https://github.com/spatie/laravel-pjax/pull/48
+
+## New Contributors
+
+- @imacrayon made their first contribution in https://github.com/spatie/laravel-pjax/pull/48
+
+**Full Changelog**: https://github.com/spatie/laravel-pjax/compare/2.2.1...2.2.2
+
 ## 2.2.0 - 2022-02-08
 
 - allow Laravel 9
