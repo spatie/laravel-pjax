@@ -2,6 +2,20 @@
 
 All notable changes to `laravel-pjax` will be documented in this file
 
+## 2.3.0 - 2023-04-12
+
+### What's Changed
+
+- Add PHP 8.2 Support by @patinthehat in https://github.com/spatie/laravel-pjax/pull/49
+- Laravel 10.x Compatibility by @laravel-shift in https://github.com/spatie/laravel-pjax/pull/50
+
+### New Contributors
+
+- @patinthehat made their first contribution in https://github.com/spatie/laravel-pjax/pull/49
+- @laravel-shift made their first contribution in https://github.com/spatie/laravel-pjax/pull/50
+
+**Full Changelog**: https://github.com/spatie/laravel-pjax/compare/2.2.2...2.3.0
+
 ## 2.2.2 - 2022-03-17
 
 ## What's Changed
