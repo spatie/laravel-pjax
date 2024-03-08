@@ -2,6 +2,19 @@
 
 All notable changes to `laravel-pjax` will be documented in this file
 
+## 2.4.0 - 2024-03-08
+
+### What's Changed
+
+* Fix Test Status Budge by @askdkc in https://github.com/spatie/laravel-pjax/pull/51
+* Laravel 11.x Compatibility by @laravel-shift in https://github.com/spatie/laravel-pjax/pull/52
+
+### New Contributors
+
+* @askdkc made their first contribution in https://github.com/spatie/laravel-pjax/pull/51
+
+**Full Changelog**: https://github.com/spatie/laravel-pjax/compare/2.3.0...2.4.0
+
 ## 2.3.0 - 2023-04-12
 
 ### What's Changed
