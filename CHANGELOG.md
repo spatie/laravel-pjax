@@ -2,6 +2,14 @@
 
 All notable changes to `laravel-pjax` will be documented in this file
 
+## 2.4.1 - 2025-02-21
+
+### What's Changed
+
+* Laravel 12.x Compatibility by @laravel-shift in https://github.com/spatie/laravel-pjax/pull/53
+
+**Full Changelog**: https://github.com/spatie/laravel-pjax/compare/2.4.0...2.4.1
+
 ## 2.4.0 - 2024-03-08
 
 ### What's Changed
