@@ -53,7 +53,7 @@ class FilterIfPjax
 
     protected function fetchContainer(Crawler $crawler, $container): string
     {
-        $content = $crawler->filter($container);
+        $content = $crawler->filter((string)$container);
 
         if (! $content->count()) {
             abort(422);
