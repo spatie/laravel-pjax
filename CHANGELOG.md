@@ -2,6 +2,20 @@
 
 All notable changes to `laravel-pjax` will be documented in this file
 
+## 2.4.2 - 2025-11-28
+
+### What's Changed
+
+* Update issue template by @AlexVanderbist in https://github.com/spatie/laravel-pjax/pull/55
+* Added Symfony 8 support to all symfony/* packages. by @thecaliskan in https://github.com/spatie/laravel-pjax/pull/57
+
+### New Contributors
+
+* @AlexVanderbist made their first contribution in https://github.com/spatie/laravel-pjax/pull/55
+* @thecaliskan made their first contribution in https://github.com/spatie/laravel-pjax/pull/57
+
+**Full Changelog**: https://github.com/spatie/laravel-pjax/compare/2.4.1...2.4.2
+
 ## 2.4.1 - 2025-02-21
 
 ### What's Changed
