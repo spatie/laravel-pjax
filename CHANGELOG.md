@@ -2,6 +2,10 @@
 
 All notable changes to `laravel-pjax` will be documented in this file
 
+## 2.5.0 - 2026-02-25
+
+Add Laravel 13.x compatibility
+
 ## 2.4.2 - 2025-11-28
 
 ### What's Changed
