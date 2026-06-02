@@ -2,7 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/laravel-pjax.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-pjax)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-![GitHub Workflow Status](https://img.shields.io/github/actions/workflow/status/spatie/laravel-pjax/run-tests.yml?label=tests&style=flat-square)
+![GitHub Workflow Status](https://github.com/spatie/laravel-pjax/actions/workflows/run-tests.yml/badge.svg)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/laravel-pjax.svg?style=flat-square)](https://packagist.org/packages/spatie/laravel-pjax)
 
 [Pjax](https://github.com/defunkt/jquery-pjax) is a jQuery plugin that leverages ajax to
