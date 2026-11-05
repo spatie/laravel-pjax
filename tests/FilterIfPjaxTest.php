@@ -9,13 +9,14 @@ use Symfony\Component\HttpFoundation\Response;
 
 class FilterIfPjaxTest extends TestCase
 {
+    protected $middleware;
+
     public function setUp(): void
     {
         $this->middleware = new FilterIfPjax();
     }
 
-    /** @test */
-    public function it_will_not_modify_a_non_pjax_request()
+    public function test_it_will_not_modify_a_non_pjax_request()
     {
         $request = new Request();
 
@@ -26,8 +27,7 @@ class FilterIfPjaxTest extends TestCase
         $this->assertEquals($this->getHtml(), $response->getContent());
     }
 
-    /** @test */
-    public function it_will_return_the_title_and_contents_of_the_container_for_pjax_request()
+    public function test_it_will_return_the_title_and_contents_of_the_container_for_pjax_request()
     {
         $request = $this->addPjaxHeaders(new Request());
 
@@ -38,8 +38,7 @@ class FilterIfPjaxTest extends TestCase
         $this->assertEquals('<title>Pjax title</title>Content', $response->getContent());
     }
 
-    /** @test */
-    public function it_will_not_return_the_title_if_it_is_not_set()
+    public function test_it_will_not_return_the_title_if_it_is_not_set()
     {
         $request = $this->addPjaxHeaders(new Request());
 
@@ -50,8 +49,7 @@ class FilterIfPjaxTest extends TestCase
         $this->assertEquals('Content', $response->getContent());
     }
 
-    /** @test */
-    public function it_will_set_the_request_uri_for_a_pjax_request()
+    public function test_it_will_set_the_request_uri_for_a_pjax_request()
     {
         $request = $this->addPjaxHeaders(Request::create('/test'));
 
@@ -60,8 +58,7 @@ class FilterIfPjaxTest extends TestCase
         $this->assertEquals('/test', $response->headers->get('X-PJAX-URL'));
     }
 
-    /** @test */
-    public function it_will_set_the_request_version_header_for_a_pjax_request()
+    public function test_it_will_set_the_request_version_header_for_a_pjax_request()
     {
         $request = $this->addPjaxHeaders(Request::create('/test'));
 
@@ -70,8 +67,7 @@ class FilterIfPjaxTest extends TestCase
         $this->assertEquals('1.0.0', $response->headers->get('X-PJAX-Version'));
     }
 
-    /** @test */
-    public function it_wil_not_set_a_version_header_when_it_is_not_requested()
+    public function test_it_wil_not_set_a_version_header_when_it_is_not_requested()
     {
         $request = $this->addPjaxHeaders(new Request());
 
